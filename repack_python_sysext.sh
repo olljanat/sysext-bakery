@@ -17,6 +17,8 @@ rm flatcar-python.raw
 # https://peps.python.org/pep-0668/ when installing modules
 find $NEWTMP -name 'EXTERNALLY-MANAGED' -exec rm {} \;
 
-mv $NEWTMP flatcar-python
-RELOAD=1 ./bake.sh flatcar-python
-rm -rf "flatcar-python"
+mkdir python
+mv $NEWTMP/* python/
+rm python/usr/lib/extension-release.d/*
+RELOAD=1 ./bake.sh python
+rm -rf "python"

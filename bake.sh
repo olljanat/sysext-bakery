@@ -73,6 +73,7 @@ else
   if version_ge "$VER" "4.6.1"; then
     ARG+=('-xattrs-exclude' '^btrfs.')
   fi
+  ARG+=('-comp' 'zstd' '-Xcompression-level' '22' '-b' '512k')
   mksquashfs "${SYSEXTNAME}" "${SYSEXTNAME}".raw "${ARG[@]}"
 fi
 echo "Created ${SYSEXTNAME}.raw"
